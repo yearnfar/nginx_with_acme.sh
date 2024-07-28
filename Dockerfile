@@ -1,8 +1,5 @@
 FROM nginx:stable-alpine
 
-ENV http_proxy=http://192.168.3.143:1087
-ENV https_proxy=http://192.168.3.143:1087
-
 RUN apk --no-cache add -f \
     openssl \
     openssh-client \
