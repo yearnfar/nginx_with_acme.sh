@@ -18,3 +18,5 @@ RUN apk --no-cache add -f \
 RUN curl https://get.acme.sh | sh -s email=my@example.com \
     && ln -s /root/.acme.sh/acme.sh /usr/bin \
     && mkdir -p /etc/nginx/ssl
+
+VOLUME /root/.acme.sh
