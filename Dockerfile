@@ -15,8 +15,7 @@ RUN apk --no-cache add -f \
     jq \
     cronie
 
-RUN curl https://get.acme.sh | sh -s email=my@example.com \
-    && ln -s /root/.acme.sh/acme.sh /usr/bin \
+RUN curl https://get.acme.sh | sh -s email=my@example.com --config-home /etc/acme.sh \
+    && echo -e '#!/bin/sh\n/root/.acme.sh/acme.sh --config-home /etc/acme.sh "$@"' > /usr/bin/acme.sh \
+    && chmod +x /usr/bin/acme.sh \ 
     && mkdir -p /etc/nginx/ssl
-
-VOLUME /root/.acme.sh
